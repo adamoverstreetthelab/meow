@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+	<title>Beaded Pants</title>
+	<script src="processing.js"></script>
+</head>
+
+<body onload="init()">
+	<h1>Process.js Pants</h1>
+	<canvas data-processing-sources="pants.js"></canvas>
+
+	<script src="http://code.createjs.com/soundjs-0.5.2.min.js">
+	</script>
+
+	<script src="http://code.jquery.com/jquery-1.11.1.js">
+	</script>
+
+	<script>
+
+
+		
+		function init() {
+	    // if initializeDefaultPlugins returns false, we cannot play sound
+	    	if (!createjs.Sound.initializeDefaultPlugins()) {return;}
+	 
+	    	//var audioPath = "http://upload.wikimedia.org/wikipedia/commons/6/62/";
+	    	var audioPath = "/home/rodica/Programming Classes and Meetups/GDI IntroJS/sounds/";
+	    	var manifest = [
+	      	  {id:"Meow1", src:"meow1.ogg"},
+	       	{id:"Meow2", src:"meow2.ogg"}
+	    	];
+	 
+	    createjs.Sound.alternateExtensions = ["mp3"];
+	    createjs.Sound.addEventListener("fileload", handleLoad);
+	    createjs.Sound.registerManifest(manifest, audioPath);
+	}
+	 
+		function handleLoad(event) {
+	    $("canvas").on("mouseover",function(){
+	    	 createjs.Sound.play(event.src);
+	    })  
+	}
+
+
+
+	</script>
+
+
+</body>
+
+</html>
